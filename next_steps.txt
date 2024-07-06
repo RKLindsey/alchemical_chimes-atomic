@@ -1,0 +1,21 @@
+# Using a LJ reference potential (note, "***" indicates either code development needed or a complicated step: 
+
+1. Update He and Ar .xyzf files to include energies and stresses
+2. ***Verify the codes work properly when energies included in fits
+3. ***Update .py script to accept fit weights
+4. For the He-only and Ar-only .xyzfs, individually, perform a Od and weight optimization to determine what is needed to get the PES correct, in addition to force parity
+5. For the Ar+He.xyz file, fitting energies and forces, perform Oe and Od optimization to determine what is needed to get the PES correct, in addition to force parity
+6. Repeat witht he Ar + He + Ar/He .xyzf file
+7. Create .xyzf files for O2, N2, Cl2, and Br2 under non-reactive conditions
+8. ***Update codes with hyperparameters for O, N, Cl, and Br
+9. Fit .xyzfs from 7 individually (Od optimization, confirm PES and force parity)
+10. Create .xyzf files for non-reactive mixtures of step 7
+11. Fit .xyzf files from 10
+12. Create a non-reactive mixture of mono- and di-atomic systems
+13. Fit .xyzf files from 12
+14. ***Implement ability to run dynamics with alchemical models
+15. For all good models generated to date, run dynamics, compare results with LJ simulations
+16. ***Identify a purely 2-bodied reactive potential implemented in LAMMPS; test this method for reactive systems
+17. ***Extend code to 3-body systems, including need for permuational invariance
+18. Apply the 3b code to class-2 LJ UA propane (non-reactive) and class-2 LJ UA 1-flouroethane
+19. Apply to DFT water under ambient conditions (from 2nd ChIMES paper)
