@@ -1,0 +1,53 @@
+This folder is a proving ground for extension of Melody's alchemical ChIMES
+models to atomic systems. This is all only implemented for a 2B system to keep
+things simple.
+
+R.K. Lindsey (2024)
+
+The basic premise is described in the file Alchemical ChIMES Ideas.pdf
+
+There are a number of codes and scripts in this repository. Note that these are
+not good examples of good coding practice - this is some quick and dirty testing
+done over a day or two.
+
+test_chemfit.cpp:
+
+    This file reads in a .xyzf file and produces A.txt and b.txt for an atomic
+    alchemical fit
+    
+test_chemfit.py
+
+    This file reads A.txt and b.txt and produces params.txt and force.txt
+    
+test_chemfit-energy_evaluator.cpp
+
+    This file reads a .xyzf file and a parameter file and generates predicted
+    forces. It is used to verify the parmeter file produced by the first two
+    codes does indeed give the results predicted in the force.txt produced by
+    test_chemfit.py
+    
+run_singleatomtype_testfits.sh
+
+    This script can be used to rapidly run through a Oe and Or hyperparameter
+    sweep and is intended for use with .xyz files that have only a single
+    element type, i.e., Oe is 1, which collapses to the normal ChIMES solution
+    
+run_twoeatomtype_testfits.sh
+
+    The same as the above, but for multi-element type .xyzfs, i.e., Oe can be
+    greater than or equal 1. The trajectory file can also contain a mix of
+    single and multi-element type frames.
+    
+test_chemfit-energy_evaluator-justE.cpp
+ 
+    A potential energy surface generator. Reads a paramter file and prints a
+    corresponding PES to stdout
+    
+The test_trajectories folder contains trajectories that were/planned to be 
+used for testing. The .xyzf files for Ar and He were created using the LJ 
+potential (parameters below); all other .xyzfs were generated via DFT.
+
+    He: epsilon = 0.021660 kcal/mol; sigma = 2.640 Angstroms
+    Ar: epsilon = 0.238066 kcal/mol; sigma = 3.405 Angstroms
+
+    LJ potential: 4*epsilon * ( (sigma/rij)^12 - (sigma/rij)^6 )
